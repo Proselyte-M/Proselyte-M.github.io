@@ -5,7 +5,7 @@ function loadAlbums(page) {
 
     history.pushState(null, '', `/albumlist/${page}`);  // 自定义URL路径
 
-    $.getJSON(`/get_albums/${page}`, function (data) {
+    $.getJSON(`https://player.thmusic.top/get_albums/${page}`, function (data) {
         if (data.status === 'ok') {
             $('#content').html(generateAlbumsHtml(data.albums, page));
         } else {
@@ -17,7 +17,7 @@ function loadAlbums(page) {
 function loadAlbumDetails(albumId) {
     updateButtonState(true);
     console.info('Loading album details for album ID:', albumId);
-    var url = '/get_album_details/' + albumId;
+    var url = 'https://player.thmusic.top/get_album_details/' + albumId;
     showLoadingMessage('Loading album details...');
 
     history.pushState(null, '', '/albums/' + albumId);  // 自定义URL路径
@@ -35,7 +35,7 @@ function loadAlbumDetails(albumId) {
 
 function fetchAndUpdateAlbumInfo(data) {
     var album = data.album;
-    var url = `/getWikiAlbumInfo/${encodeURIComponent(album.artist)}/${encodeURIComponent(album.name)}`;
+    var url = `https://player.thmusic.top/getWikiAlbumInfo/${encodeURIComponent(album.artist)}/${encodeURIComponent(album.name)}`;
 
     $.ajax({
         url: url,
@@ -73,7 +73,7 @@ function displayFavoriteAlbums() {
 
     albumIds.forEach(albumId => {
         $.ajax({
-            url: '/get_album_details/' + albumId,
+            url: 'https://player.thmusic.top/get_album_details/' + albumId,
             method: 'GET',
             success: function(album) {
                 console.debug(album)
@@ -141,8 +141,8 @@ function generateAlbumDetailsHtml(album) {
         </div>
         <div class="col-md-9">
 <ul class="list-group mb-3">
-    <li class="list-group-item"><strong>专辑名称:</strong> <a href="/albums/${album.id}" target="_blank">${album.name}</a></li>
-    <li class="list-group-item"><strong>专辑封面:</strong> <a href="/cover/o/${album.name}/${album.coverArt}" target="_blank">点击打开</a></li>
+    <li class="list-group-item"><strong>专辑名称:</strong> <a href="https://player.thmusic.top/albums/${album.id}" target="_blank">${album.name}</a></li>
+    <li class="list-group-item"><strong>专辑封面:</strong> <a href="https://player.thmusic.top/cover/o/${album.name}/${album.coverArt}" target="_blank">点击打开</a></li>
     <li class="list-group-item"><strong>社团名称:</strong> <span href="/artist/${album.artistId}" style="cursor: pointer; text-decoration: underline;" onclick="loadArtistDetails('${album.artistId}')">${album.artist}</span></li>
     <li class="list-group-item"><strong>歌曲总数:</strong> ${album.songCount}</li>
     <li class="list-group-item"><strong>首发日期:</strong> ${album.year}</li>
@@ -179,8 +179,8 @@ function generateWikiAlbumHtml(album, albumData) {
     <div class="row">
         <div class="col-md-3">
             <div class="card">
-                <a href="/cover/o/${album.name}/${album.coverArt}" target="_blank">
-                    <img src="/cover/${album.coverArt}" class="card-img-top" alt="${album.name} Album Cover - TouHou Music">
+                <a href="https://player.thmusic.top/cover/o/${album.name}/${album.coverArt}" target="_blank">
+                    <img src="https://player.thmusic.top/cover/${album.coverArt}" class="card-img-top" alt="${album.name} Album Cover - TouHou Music">
                 </a>
             </div>
         </div>
