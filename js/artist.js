@@ -6,7 +6,7 @@ function loadArtistDetails(artistId) {
     // 更新URL
     history.pushState(null, '', '/artist/' + artistId);  // 这里可以根据需要自定义URL路径
     
-    $.getJSON('/getArtist/' + artistId, function (data) {
+    $.getJSON('https://player.thmusic.top/getArtist/' + artistId, function (data) {
         console.debug(data);
         if (data.status === 'ok') {
             var artistHtml = `
@@ -46,7 +46,7 @@ function loadArtistDetails(artistId) {
 function getIndexes() {
     console.log('Loading Indexes...');
     $('#artistlist').html('<p>Loading artists list...</p>'); // 显示加载中信息
-    $.getJSON('/getIndexes', function (data) {
+    $.getJSON('https://player.thmusic.top/getIndexes', function (data) {
         if (data.status === 'ok') {
             var indexHtml = '<h3>同人社团列表</h3>';
             data.indexes.index.forEach(function (list) {
