@@ -18,7 +18,7 @@ ap.on('listshow', function () {
 
 
 async function getToken(songId) {
-    let tokenResponse = await fetch('/generate_token/' + songId, { method: 'GET' });
+    let tokenResponse = await fetch('https://player.thmusic.top/generate_token/' + songId, { method: 'GET' });
     if (!tokenResponse.ok) {
         throw new Error('Failed to generate token');
     }
@@ -87,7 +87,7 @@ async function playSong(songId, songTitle, coverArtId, artistName) {
 
     try {
         let token = await getToken(songId);
-        let songUrl = '/play/' + songId + '?token=' + token;
+        let songUrl = 'https://player.thmusic.top/play/' + songId + '?token=' + token;
         var newSong = createSongObject(songTitle, artistName, songUrl, coverArtId);
 
         var playlist = ap.list.audios;
@@ -124,7 +124,7 @@ async function playAlbum(albumId) {
 
     try {
         ap.list.clear();
-        let response = await fetch('/get_album_details/' + albumId);
+        let response = await fetch('https://player.thmusic.top/get_album_details/' + albumId);
         let data = await response.json();
 
         if (data.status === 'ok') {
