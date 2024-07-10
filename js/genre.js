@@ -24,7 +24,7 @@ function loadAlbumsByGenres(genres, page) {
     $('#content').html('<p>Loading albums...</p>'); // 显示加载中信息
     // history.pushState(null, '', `/albumlist/${page}`);  // 这里可以根据需要自定义URL路径
 
-    $.getJSON(`/getSongsByGenre/${genres}/${page}`, function (data) {
+    $.getJSON(`https://player.thmusic.top/getSongsByGenre/${genres}/${page}`, function (data) {
         console.debug(data);
         if (data.status === 'ok') {
             var genresHtml = `
