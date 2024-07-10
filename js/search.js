@@ -64,7 +64,7 @@ function searchAlbums(query) {
     $('#up-button').prop('disabled', true);
     $('#down-button').prop('disabled', true);
     $('#content').html('<p>Searching...</p>');
-    $.getJSON('/search', { query: query }, function (data) {
+    $.getJSON('https://player.thmusic.top/search', { query: query }, function (data) {
         console.debug(data);
         if (data.status === 'ok') {
             var sAlbumHtml = '<div class="row">';
@@ -98,7 +98,7 @@ function searchArtists(query) {
     $('#up-button').prop('disabled', true);
     $('#down-button').prop('disabled', true);
     $('#content').html('<p>Searching...</p>');
-    $.getJSON('/search_artists', { query: query }, function (data) {
+    $.getJSON('https://player.thmusic.top/search_artists', { query: query }, function (data) {
         console.debug(data);
         if (data.status === 'ok') {
             var sArtistHtml = '<ul class="list-group">';
@@ -124,7 +124,7 @@ function searchSongs(query) {
     $('#up-button').prop('disabled', true);
     $('#down-button').prop('disabled', true);
     $('#content').html('<p>Searching...</p>');
-    $.getJSON('/search_songs', { query: query }, function (data) {
+    $.getJSON('https://player.thmusic.top/search_songs', { query: query }, function (data) {
         console.debug(data);
         if (data.status === 'ok') {
             if (data.songs.length > 0) {
