@@ -1,0 +1,11 @@
+__pycache__
+*.pyc
+cover_cache
+indexes.json
+static/favicon.ico
+static/robots.txt
+static/sitemap_with_schema.html
+static/sitemap.xml
+static/icon
+templates/
+thwikiinfo.db
